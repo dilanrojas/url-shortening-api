@@ -35,7 +35,7 @@ export default function LinkShorten() {
     setGeneratedURLs(JSON.parse(localStorage.getItem('storagedURLs')) || [])
   }, [])
 
-  const API_URL = 'https://proxy-server-dilan.vercel.app/shorten';
+  const API_URL = 'https://url-short-api-seven.vercel.app/shorten'
 
   const linkShorten = async () => {
     const fixedURL = inputURL.trim();
