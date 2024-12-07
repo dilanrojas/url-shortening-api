@@ -1,0 +1,98 @@
+---
+import Image from "astro/components/Image.astro"
+---
+
+<section class="hero-section wrapper">
+  <article class="hero-article">
+    <h1>More than just shorter links</h1>
+    <p>
+      Build your brand’s recognition and get detailed insights 
+      on how your links are performing.
+    </p>
+    <button class="get-started-button button">Get Started</button>
+  </article>
+  <picture class="hero-picture">
+    <Image
+      src="/illustration-working.svg"
+      alt="Woman working sitting on a desktop"
+      width="733"
+      height="482"
+    />
+  </picture>
+</section>
+
+<style>
+  .hero-section {
+    margin-top: 8rem;
+    font-size: 1.3rem;
+    display: flex;
+    gap: 18rem;
+  }
+
+  .hero-article {
+    max-width: 35rem;
+  }
+
+  .hero-article h1 {
+    font-size: 4.4rem;
+    font-weight: 800;
+  }
+
+  .hero-picture {
+    position: relative;
+    min-width: 10rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-picture img {
+    position: absolute;
+    aspect-ratio: 733/482;
+  }
+
+  @media (width <= 970px) {
+    .hero-section {
+      flex-direction: column-reverse;
+      align-items: center;
+      text-align: center;
+      gap: 2rem;
+    }
+
+    .hero-picture {
+      min-height: 27rem;
+    }
+
+    .hero-picture img {
+      margin-inline: auto;
+    }
+  }
+
+  @media (width <= 768px) {
+    .hero-picture {
+      min-height: 20rem;
+    }
+
+    .hero-picture img {
+      width: 500px;
+      height: auto;
+    }
+  }
+
+  @media (width <= 640px) {
+    .hero-picture {
+      justify-content: start;
+      min-width: 100%;
+    }
+
+    .hero-section { margin-top: 1rem }
+
+    .hero-article > * { font-size: 1rem }
+
+    .hero-article h1 {
+      font-size: 2.2rem;
+      margin-bottom: .5rem
+    }
+  }
+</style>

@@ -1,0 +1,166 @@
+---
+import { Image } from "astro:assets"
+---
+
+<section class="features">
+  <div class="features-section-wrapper wrapper">
+    <header class="features-header">
+      <h2>Advanced Statistics</h2>
+      <p>
+        Track how your links are performing across the web with our 
+        advanced statistics dashboard.
+      </p>
+    </header>
+
+    <section class="features-cards-section">
+      <article class="brand-recognition feature-card">
+        <picture class="brand-recognition-picture">
+          <Image
+            src="/icon-brand-recognition.svg"
+            alt="Bars representing brand recognition progress"
+            width="40"
+            height="40"
+          />
+        </picture>
+        <div class="feature-card-content">
+          <h3>Brand Recognition</h3>
+          <p>
+            Boost your brand recognition with each click. Generic links don’t 
+            mean a thing. Branded links help instil confidence in your content.
+          </p>
+        </div>
+      </article>
+
+      <article class="detailed-records feature-card">
+        <picture class="detailed-records-picture">
+          <Image
+            src="/icon-detailed-records.svg"
+            alt="Bars representing brand recognition progress"
+            width="40"
+            height="40"
+          />
+        </picture>
+        <div class="feature-card-content">
+          <h3>Detailed Records</h3>
+          <p>
+            Gain insights into who is clicking your links. Knowing when and where 
+            people engage with your content helps inform better decisions.
+          </p>
+        </div>
+      </article>
+
+      <article class="fully-customizable feature-card">
+        <picture class="fully-customizable-picture">
+          <Image
+            src="/icon-fully-customizable.svg"
+            alt="Bars representing brand recognition progress"
+            width="48"
+            height="48"
+          />
+        </picture>
+        <div class="feature-card-content">
+          <h3>Fully Customizable</h3>
+          <p>
+            Improve brand awareness and content discoverability through customizable 
+            links, supercharging audience engagement.
+          </p>
+        </div>
+      </article>
+    </section>
+  </div>
+</section>
+
+<style>
+  .features {
+    padding-top: 6rem;
+    padding-bottom: 12rem;
+    background-color: hsl(230, 25%, 95%);
+  }
+
+  .features-section-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .features-header {
+    text-align: center;
+    max-width: 48ch;
+    margin-bottom: 5rem;
+  }
+
+  .features-header h2 {
+    font-size: 2.2rem;
+    margin-bottom: .5rem;
+  }
+
+  .features-cards-section {
+    display: flex;
+    gap: 2rem;
+    position: relative;
+    align-items: center;
+
+    &::before {
+      position: absolute;
+      content: '';
+      display: block;
+      margin-top: 1.2rem;
+      width: 100%;
+      height: 8px;
+      background-color: var(--cyan);
+    }
+  }
+
+  .feature-card {
+    padding: 1rem;
+    background-color: var(--white);
+    border-radius: 5px;
+    z-index: 20
+  }
+
+  .feature-card picture {
+    --size: 80px;
+
+    width: var(--size);
+    height: var(--size);
+    border-radius: 100%;
+    transform: translateY(-55px);
+    background-color: var(--d-violet);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    & img { position: absolute }
+  }
+
+  .feature-card-content > * + * { margin-top: 1rem }
+
+  .feature-card:nth-child(2) { transform: translateY(40px) }
+  .feature-card:nth-child(3) { transform: translateY(80px) }
+
+  .feature-card-content { transform: translateY(-20px) }
+
+  @media (width <= 768px) {
+    .feature-card:nth-child(2) { transform: translateY(0px) }
+    .feature-card:nth-child(3) { transform: translateY(0px) }
+
+    .features-cards-section {
+      flex-direction: column;
+      gap: 4rem;
+
+      &::before {
+        margin-top: 0rem;
+        width: 8px;
+        height: 100%;
+      }
+    }
+
+    .feature-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+  }
+</style>

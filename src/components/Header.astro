@@ -1,0 +1,140 @@
+---
+import Logo from "./Logo.astro"
+import Hambuguer from "./Hamburguer/Hamburguer"
+---
+
+<header class="primary-header">
+  <div class="header-wrapper wrapper">
+    <picture class="logo-wrapper">
+      <Logo fill="var(--d-violet)" />
+    </picture>
+    <div class="primary-nav-wrapper">
+      <nav class="primary-nav">
+        <ul class="primary-nav-list">
+          <li class="primary-nav-item"><a href="#">Features</a></li>
+          <li class="primary-nav-item"><a href="#">Pricing</a></li>
+          <li class="primary-nav-item"><a href="#">Resources</a></li>
+        </ul>
+      </nav>
+      <form class="login-form" action="">
+        <button type="button" class="login-button">Login</button>
+        <button type="button" class="sign-up-button button">Sign Up</button>
+      </form>
+    </div>
+    <Hambuguer client:load />
+  </div>
+</header>
+
+<style>
+  .primary-header {
+    padding-top: 3rem;
+    font-weight: 600;
+    font-size: .9rem;
+  }
+
+  .header-wrapper {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+    position: relative;
+  }
+
+  .logo-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .primary-nav-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .primary-nav-list {
+    display: flex;
+    gap: 1.2rem;
+  }
+
+  .primary-nav-item {
+    transition: color .1s ease-in-out;
+
+    &:hover { color: var(--vd-violet) }
+  }
+
+  .login-form {
+    display: flex;
+    gap: 1.9rem;
+  }
+
+  .login-button {
+    transition: color .1s ease-in-out;
+
+    &:hover { color: var(--vd-violet) }
+  }
+
+  .sign-up-button {
+    padding: .55rem 1.4rem;
+    border-radius: 40px;
+    color: var(--white);
+    min-width: fit-content;
+  }
+
+  @media (width <= 768px) {
+    .primary-nav-wrapper {
+      display: none;
+      background-color: var(--d-violet);
+      flex-direction: column;
+      align-items: start;
+      justify-content: start;
+      position: absolute;
+      width: 100%;
+      gap: 2rem;
+      top: 170%;
+      border-radius: 7px;
+      padding: 2rem 1.5rem;
+      z-index: 90;
+
+      opacity: 0;
+      transition: opacity .1s ease-in-out, display .1s ease-in-out allow-discrete;
+    }
+
+    .primary-nav-wrapper.expanded {
+      display: flex;
+
+      opacity: 1;
+      transition: opacity .1s ease-in-out;
+      @starting-style { opacity: 0 }
+    }
+
+    .login-form {
+      width: 100%;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .sign-up-button {
+      width: 100%;
+    }
+    
+    .primary-nav {
+      width: 100%;
+    }
+
+    .primary-nav-list {
+      flex-direction: column;
+      text-align: center;
+      padding-bottom: 1.5rem;
+      min-width: 100%;
+      border-bottom: 1px solid var(--gray);
+    }
+
+    .primary-nav-item,
+    .login-button {
+      color: var(--white);
+
+      &:hover { color: var(--gray) }
+    }
+  }
+</style>

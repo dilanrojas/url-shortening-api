@@ -1,0 +1,164 @@
+.link-shorten {
+  background-color: hsl(230, 25%, 95%);
+  width: 100%;
+  margin-top: 18rem;
+}
+
+.link-shorten-form-wrapper {
+  display: flex;
+  align-items: center;
+  margin-top: 4rem;
+  padding: 3rem;
+  border-radius: 10px;
+  position: relative;
+  transform: translateY(-85px);
+
+  background-color: var(--d-violet);
+  background-image: url('/bg-shorten-desktop.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.shorten-link-form {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 1.3rem;
+}
+
+#shorten-link-input {
+  height: 100%;
+  width: 100%;
+  border-radius: 10px;
+  padding-inline: 1.5rem;
+  color: var(--vd-blue);
+  display: flex;
+  height: 60px;
+  justify-content: center;
+  align-items: center;
+
+  &:user-invalid { outline: 3px solid var(--red) }
+}
+
+#shorten-link-input:user-invalid::placeholder {
+  color: var(--red-op)
+}
+
+.shorten-button {
+  height: 100%;
+  background-color: var(--cyan);
+  height: 60px;
+  border-radius: 10px;
+  color: var(--white);
+  padding-inline: 1.4rem;
+  font-weight: 500;
+  min-width: fit-content;
+}
+
+.url-input {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.url-input:has(#shorten-link-input:user-invalid) .url-error-message {
+  visibility: visible;
+}
+
+.url-error-message {
+  display: block;
+  visibility: hidden;
+  position: absolute;
+  top: 115%;
+  font-style: italic;
+  font-size: .86rem;
+  color: var(--red);
+}
+
+.shortened-urls-wrapper {
+  transform: translateY(-62px);
+}
+
+.shortened-urls-wrapper ul > * + * { margin-top: .7rem }
+
+.shortened-url-wrapper {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr 1fr;
+  background-color: var(--white);
+  padding: 1rem;
+}
+
+.user-url {
+  color: var(--vd-violet)
+}
+
+.copy-generated-button {
+  color: var(--white);
+  height: 100%;
+  border-radius: 5px;
+  font-size: .87rem;
+  padding-block: .3rem;
+  background-color: var(--cyan);
+}
+
+.copy-generated-button.copied {
+  background-color: var(--d-violet);
+}
+
+.generated-url-wrapper {
+  display: grid;
+  justify-content: end;
+  align-items: center;
+  gap: 1.2rem;
+  grid-template-columns: auto 100px;
+}
+
+.generated-url {
+  color: var(--cyan)
+}
+
+@media (width <= 768px) {
+  .link-shorten {
+    margin-top: 14rem;
+  }
+
+  .link-shorten-form-wrapper {
+    transform: translateY(-140px);
+  }
+
+  .shorten-link-form {
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .shorten-button {
+    width: 100%;
+  }
+
+  .shortened-url-wrapper {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    position: relative;
+
+    &::before {
+      position: absolute;
+      content: '';
+      display: block;
+      width: 100%;
+      height: 1px;
+      background-color: var(--gray);
+      margin-bottom: 4rem;
+    }
+  }
+
+  .generated-url-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .copy-generated-button {
+    padding-block: .8rem;
+  }
+}

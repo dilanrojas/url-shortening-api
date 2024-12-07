@@ -1,0 +1,20 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '@components/Header.astro';
+import Hero from '@components/Hero.astro';
+import LinkShorten from '@components/LinkShorten/LinkShorten';
+import Features from '@components/Features.astro';
+import GetStarted from '@components/GetStarted.astro';
+import Footer from '@components/Footer.astro';
+---
+
+<Layout title="Frontend Mentor | Shortly URL shortening API Challenge">
+	<Header />
+	<main>
+		<Hero />
+		<LinkShorten client:load />
+		<Features />
+		<GetStarted />
+	</main>
+	<Footer />
+</Layout>
