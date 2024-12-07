@@ -35,40 +35,44 @@ export default function LinkShorten() {
     setGeneratedURLs(JSON.parse(localStorage.getItem('storagedURLs')) || [])
   }, [])
 
-  const API_URL = `https://cleanuri.com/api/v1/shorten`
+  const API_URL = 'https://proxy-server-dilan.vercel.app/shorten';
 
   const linkShorten = async () => {
-    const fixedURL = inputURL.trim()
-
-    if (!fixedURL) return
-
+    const fixedURL = inputURL.trim();
+  
+    if (!fixedURL) return;
+  
     try {
       const response = await fetch(API_URL, {
         method: 'POST',
-        body: `url=${encodeURI(inputURL)}`,
         headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        }
-      })
-
-      const data = await response.json()
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ url: fixedURL }),
+      });
+  
+      const data = await response.json();
       if (data.error) {
-        throw new Error(data.error)
+        throw new Error(data.error);
       }
-
+  
       const newGeneratedURL = {
         userInput: fixedURL,
         shortenURL: data.result_url,
-      }
-
-      setGeneratedURLs((prevURLs) => [...prevURLs, newGeneratedURL])
+      };
+  
+      setGeneratedURLs((prevURLs) => [...prevURLs, newGeneratedURL]);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };  
 
   useEffect(() => {
-    localStorage.setItem('storagedURLs', JSON.stringify(generatedURLs))
+    const timeout = setTimeout(() => {
+      localStorage.setItem('storagedURLs', JSON.stringify(generatedURLs))
+    }, 500)
+  
+    return () => clearTimeout(timeout)
   }, [generatedURLs])
 
   return (
