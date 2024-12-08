@@ -23,14 +23,16 @@ import Image from "astro/components/Image.astro"
 
 <style>
   .hero-section {
-    margin-top: 8rem;
+    margin-top: 5.5rem;
     font-size: 1.3rem;
     display: flex;
-    gap: 18rem;
+    align-items: center;
+    gap: 4rem;
   }
 
   .hero-article {
     max-width: 35rem;
+    text-wrap: balance;
   }
 
   .hero-article h1 {
@@ -39,60 +41,51 @@ import Image from "astro/components/Image.astro"
   }
 
   .hero-picture {
-    position: relative;
-    min-width: 10rem;
+    --picture-width: 783px;
 
+    position: relative;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: start;
+    min-width: 450px;
+    height: 482px;
   }
 
   .hero-picture img {
     position: absolute;
+    width: var(--picture-width);
+    height: auto;
     aspect-ratio: 733/482;
   }
 
-  @media (width <= 970px) {
+  @media (width <= 968px) {
     .hero-section {
       flex-direction: column-reverse;
-      align-items: center;
       text-align: center;
-      gap: 2rem;
-    }
-
-    .hero-picture {
-      min-height: 27rem;
-    }
-
-    .hero-picture img {
-      margin-inline: auto;
-    }
-  }
-
-  @media (width <= 768px) {
-    .hero-picture {
-      min-height: 20rem;
-    }
-
-    .hero-picture img {
-      width: 500px;
-      height: auto;
     }
   }
 
   @media (width <= 640px) {
-    .hero-picture {
-      justify-content: start;
-      min-width: 100%;
-    }
-
-    .hero-section { margin-top: 1rem }
+    .hero-section { margin-top: 1rem; gap: 1.5rem; }
 
     .hero-article > * { font-size: 1rem }
 
     .hero-article h1 {
       font-size: 2.2rem;
       margin-bottom: .5rem
+    }
+
+    .hero-picture {
+      --picture-width: 503px;
+
+      min-width: 380px;
+      height: 360px;
+    }
+  }
+
+  @media (width <= 400px) {
+    .hero-picture {
+      min-width: 100%;
     }
   }
 </style>

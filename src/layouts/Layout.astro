@@ -78,12 +78,14 @@ const { title } = Astro.props;
 		font-size: 18px;
     color: var(--grayish-violet);
 		overflow-x: hidden;
-		scrollbar-gutter: stable
+		scrollbar-gutter: stable;
 	}
-
+	
 	html:has(.no-scroll) {
 		overflow-y: hidden;
 	}
+
+	body { overflow-x: hidden }
 
 	ul, ol { list-style-type: none }
 
